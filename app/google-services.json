@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "project_number": "149344227690",
+    "firebase_url": "https://vzladreams.firebaseio.com",
+    "project_id": "vzladreams",
+    "storage_bucket": "vzladreams.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:7aaa9a0ca7c7a3fe",
+        "android_client_info": {
+          "package_name": "com.example.andresprato.venezueladream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-abtk6f5odbuh121rua02vv4vm7mhcr11.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andresprato.venezueladream",
+            "certificate_hash": "c5b9ee42dc36ae4640855bf3bcd92006aa441a6e"
+          }
+        },
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "149344227690-8eavi9nsdr1ufcl8g3ik33ohqjq5qsoi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "AndresPrato.VenezuelaDreams"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
