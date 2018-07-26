@@ -1,5 +1,6 @@
 package com.example.andresprato.venezueladream.cards;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.DrawableRes;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 
 import com.example.andresprato.venezueladream.R;
 import com.example.andresprato.venezueladream.utils.DecodeBitmapTask;
+import com.squareup.picasso.Picasso;
 
 public class SliderCard extends RecyclerView.ViewHolder implements DecodeBitmapTask.Listener {
 
@@ -24,7 +26,10 @@ public class SliderCard extends RecyclerView.ViewHolder implements DecodeBitmapT
         imageView = (ImageView) itemView.findViewById(R.id.image);
     }
 
-    void setContent(@DrawableRes final int resId) {
+    void setContent(/*@DrawableRes final int resId*/Context context, String url) {
+        Picasso.with(context).load(url).into(imageView);
+
+        /*
         if (viewWidth == 0) {
             itemView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
@@ -38,7 +43,7 @@ public class SliderCard extends RecyclerView.ViewHolder implements DecodeBitmapT
             });
         } else {
             loadBitmap(resId);
-        }
+        }*/
     }
 
     void clearContent() {
@@ -54,7 +59,7 @@ public class SliderCard extends RecyclerView.ViewHolder implements DecodeBitmapT
 
     @Override
     public void onPostExecuted(Bitmap bitmap) {
-        imageView.setImageBitmap(bitmap);
+        //imageView.setImageBitmap(bitmap);
     }
 
 }
