@@ -1,1 +1,1 @@
-include ':app', ':card-slider-0.2.0'
+include ':app', ':card-slider-0.2.0', ':picasso-2.5.2'

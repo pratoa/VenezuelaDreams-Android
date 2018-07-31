@@ -1,5 +1,6 @@
 package com.example.andresprato.venezueladream.cards;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,14 +8,18 @@ import android.view.ViewGroup;
 
 import com.example.andresprato.venezueladream.R;
 
+import java.util.List;
+
 public class SliderAdapter extends RecyclerView.Adapter<SliderCard> {
 
     private final int count;
-    private final int[] content;
+    private final Context mContext;
+    private final List<String> URLs;
     private final View.OnClickListener listener;
 
-    public SliderAdapter(int[] content, int count, View.OnClickListener listener) {
-        this.content = content;
+    public SliderAdapter(Context context, List<String> imgURLs, int count, View.OnClickListener listener) {
+        this.mContext = context;
+        this.URLs = imgURLs;
         this.count = count;
         this.listener = listener;
     }
@@ -39,7 +44,8 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderCard> {
 
     @Override
     public void onBindViewHolder(SliderCard holder, int position) {
-        holder.setContent(content[position % content.length]);
+        //holder.setContent(content[position % content.length]);
+        holder.setContent(mContext, URLs.get(position));
     }
 
     @Override

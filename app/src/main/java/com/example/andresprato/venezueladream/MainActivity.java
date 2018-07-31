@@ -4,14 +4,13 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,53 +21,82 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.example.andresprato.venezueladream.cards.SliderAdapter;
-import com.example.andresprato.venezueladream.utils.DecodeBitmapTask;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ramotion.cardslider.CardSliderLayoutManager;
 import com.ramotion.cardslider.CardSnapHelper;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    //private final int[][] dotCoords = new int[5][2];
-    private final int[] pics = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5};
-    //private final int[] maps = {R.drawable.map_paris, R.drawable.map_seoul, R.drawable.map_london, R.drawable.map_beijing, R.drawable.map_greece};
-    private final int[] descriptions = {R.string.text1, R.string.text2, R.string.text3, R.string.text4, R.string.text5};
-    private final String[] countries = {"PARIS", "SEOUL", "LONDON", "BEIJING", "THIRA"};
-    private final String[] places = {"The Louvre", "Gwanghwamun", "Tower Bridge", "Temple of Heaven", "Aegeana Sea"};
-    //private final String[] temperatures = {"21°C", "19°C", "17°C", "23°C", "20°C"};
-    //private final String[] times = {"Aug 1 - Dec 15    7:00-18:00", "Sep 5 - Nov 10    8:00-16:00", "Mar 8 - May 21    7:00-18:00"};
+    private static final String defaultImageURL = "https://i.stack.imgur.com/l60Hf.png";
 
-    private final SliderAdapter sliderAdapter = new SliderAdapter(pics, 20, new OnCardClickListener());
+    private ArrayList<Child> children = new ArrayList<>();
+    private ArrayList<String> URLs = new ArrayList<>();
+
+    private SliderAdapter sliderAdapter;
 
     private CardSliderLayoutManager layoutManger;
     private RecyclerView recyclerView;
-    private ImageSwitcher mapSwitcher;
-    //private TextSwitcher temperatureSwitcher;
-    private TextSwitcher placeSwitcher;
-    //private TextSwitcher clockSwitcher;
+    private TextView bioTextView;
     private TextSwitcher descriptionsSwitcher;
-    private View greenDot;
 
-    private TextView country1TextView;
-    private TextView country2TextView;
-    private int countryOffset1;
-    private int countryOffset2;
-    private long countryAnimDuration;
+    private TextView child1TextView;
+    private TextView child2TextView;
+    private int childOffset1;
+    private int childOffset2;
+    private long childAnimDuration;
     private int currentPosition;
-
-    private DecodeBitmapTask decodeMapBitmapTask;
-    private DecodeBitmapTask.Listener mapLoadListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initRecyclerView();
-        initCountryText();
-        initSwitchers();
-        //initGreenDot();
+        final DatabaseReference firebaseRef = FirebaseDatabase.getInstance().getReference();
+        firebaseRef.getRoot().child("/child").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
+                for (DataSnapshot childData : dataSnapshot.getChildren()) {
+                    Child child = new Child(childData.child("first_name").getValue(String.class),
+                            childData.child("last_name").getValue(String.class),
+                            childData.child("description").getValue(String.class),
+                            childData.child("img_url").getValue(String.class),
+                            childData.child("date_of_birth").getValue(String.class));
 
+                    if (child.getImageUrl() == null) {
+                        URLs.add(defaultImageURL);
+                    } else {
+                        URLs.add(child.getImageUrl());
+                    }
+
+                    Log.v("TACOOO", "Child added!");
+                    Log.v("TACOOO", child.getFirstName());
+                    Log.v("TACOOO", child.getLastName());
+                    Log.v("TACOOO", child.getDescription());
+
+                    children.add(child);
+                }
+
+                sliderAdapter = new SliderAdapter(getApplicationContext(), URLs, children.size(), new OnCardClickListener());
+
+                initRecyclerView();
+                initCountryText();
+                initSwitchers();
+                //initGreenDot();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void initRecyclerView() {
@@ -89,114 +117,53 @@ public class MainActivity extends AppCompatActivity {
 
         layoutManger = (CardSliderLayoutManager) recyclerView.getLayoutManager();
 
-
-
         new CardSnapHelper().attachToRecyclerView(recyclerView);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (isFinishing() && decodeMapBitmapTask != null) {
-            decodeMapBitmapTask.cancel(true);
-        }
-    }
-
     private void initSwitchers() {
-        /*temperatureSwitcher = (TextSwitcher) findViewById(R.id.ts_temperature);
-        temperatureSwitcher.setFactory(new TextViewFactory(R.style.TemperatureTextView, true));
-        temperatureSwitcher.setCurrentText(temperatures[0]);*/
 
-        placeSwitcher = (TextSwitcher) findViewById(R.id.ts_place);
-        placeSwitcher.setFactory(new TextViewFactory(R.style.PlaceTextView, false));
-        placeSwitcher.setCurrentText(places[0]);
-
-        /*clockSwitcher = (TextSwitcher) findViewById(R.id.ts_clock);
-        clockSwitcher.setFactory(new TextViewFactory(R.style.ClockTextView, false));
-        clockSwitcher.setCurrentText(times[0]);*/
+        bioTextView = (TextView) findViewById(R.id.ts_place);
+        bioTextView.setText("Bio:");
 
         descriptionsSwitcher = (TextSwitcher) findViewById(R.id.ts_description);
         descriptionsSwitcher.setInAnimation(this, android.R.anim.fade_in);
         descriptionsSwitcher.setOutAnimation(this, android.R.anim.fade_out);
         descriptionsSwitcher.setFactory(new TextViewFactory(R.style.DescriptionTextView, false));
-        descriptionsSwitcher.setCurrentText(getString(descriptions[0]));
+        descriptionsSwitcher.setCurrentText(children.get(0).getDescription());
 
-        mapSwitcher = (ImageSwitcher) findViewById(R.id.ts_map);
-        mapSwitcher.setInAnimation(this, R.anim.fade_in);
-        mapSwitcher.setOutAnimation(this, R.anim.fade_out);
-        mapSwitcher.setFactory(new ImageViewFactory());
-        //mapSwitcher.setImageResource(maps[0]);
-
-        mapLoadListener = new DecodeBitmapTask.Listener() {
-            @Override
-            public void onPostExecuted(Bitmap bitmap) {
-                ((ImageView)mapSwitcher.getNextView()).setImageBitmap(bitmap);
-                mapSwitcher.showNext();
-            }
-        };
     }
 
     private void initCountryText() {
-        countryAnimDuration = getResources().getInteger(R.integer.labels_animation_duration);
-        countryOffset1 = getResources().getDimensionPixelSize(R.dimen.left_offset);
-        countryOffset2 = getResources().getDimensionPixelSize(R.dimen.card_width);
-        country1TextView = (TextView) findViewById(R.id.tv_country_1);
-        country2TextView = (TextView) findViewById(R.id.tv_country_2);
+        childAnimDuration = getResources().getInteger(R.integer.labels_animation_duration);
+        childOffset1 = getResources().getDimensionPixelSize(R.dimen.left_offset);
+        childOffset2 = getResources().getDimensionPixelSize(R.dimen.card_width);
+        child1TextView = (TextView) findViewById(R.id.tv_country_1);
+        child2TextView = (TextView) findViewById(R.id.tv_country_2);
 
-        country1TextView.setX(countryOffset1);
-        country2TextView.setX(countryOffset2);
-        country1TextView.setText(countries[0]);
-        country2TextView.setAlpha(0f);
 
-        //country1TextView.setTypeface(Typeface.createFromAsset(getAssets(), "open-sans-extrabold.ttf"));
-        //country2TextView.setTypeface(Typeface.createFromAsset(getAssets(), "open-sans-extrabold.ttf"));
+        child1TextView.setX(childOffset1);
+        child2TextView.setX(childOffset2);
+        child1TextView.setText(children.get(0).getFirstName() + ", " + children.get(0).getAge());
+        child2TextView.setAlpha(0f);
     }
-
-    /*
-    private void initGreenDot() {
-        mapSwitcher.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                mapSwitcher.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                final int viewLeft = mapSwitcher.getLeft();
-                final int viewTop = mapSwitcher.getTop() + mapSwitcher.getHeight() / 3;
-
-                final int border = 100;
-                final int xRange = Math.max(1, mapSwitcher.getWidth() - border * 2);
-                final int yRange = Math.max(1, (mapSwitcher.getHeight() / 3) * 2 - border * 2);
-
-                final Random rnd = new Random();
-
-                for (int i = 0, cnt = dotCoords.length; i < cnt; i++) {
-                    dotCoords[i][0] = viewLeft + border + rnd.nextInt(xRange);
-                    dotCoords[i][1] = viewTop + border + rnd.nextInt(yRange);
-                }
-
-                greenDot = findViewById(R.id.green_dot);
-                greenDot.setX(dotCoords[0][0]);
-                greenDot.setY(dotCoords[0][1]);
-            }
-        });
-    }*/
 
     private void setCountryText(String text, boolean left2right) {
         final TextView invisibleText;
         final TextView visibleText;
-        if (country1TextView.getAlpha() > country2TextView.getAlpha()) {
-            visibleText = country1TextView;
-            invisibleText = country2TextView;
+        if (child1TextView.getAlpha() > child2TextView.getAlpha()) {
+            visibleText = child1TextView;
+            invisibleText = child2TextView;
         } else {
-            visibleText = country2TextView;
-            invisibleText = country1TextView;
+            visibleText = child2TextView;
+            invisibleText = child1TextView;
         }
 
         final int vOffset;
         if (left2right) {
             invisibleText.setX(0);
-            vOffset = countryOffset2;
+            vOffset = childOffset2;
         } else {
-            invisibleText.setX(countryOffset2);
+            invisibleText.setX(childOffset2);
             vOffset = 0;
         }
 
@@ -204,12 +171,12 @@ public class MainActivity extends AppCompatActivity {
 
         final ObjectAnimator iAlpha = ObjectAnimator.ofFloat(invisibleText, "alpha", 1f);
         final ObjectAnimator vAlpha = ObjectAnimator.ofFloat(visibleText, "alpha", 0f);
-        final ObjectAnimator iX = ObjectAnimator.ofFloat(invisibleText, "x", countryOffset1);
+        final ObjectAnimator iX = ObjectAnimator.ofFloat(invisibleText, "x", childOffset1);
         final ObjectAnimator vX = ObjectAnimator.ofFloat(visibleText, "x", vOffset);
 
         final AnimatorSet animSet = new AnimatorSet();
         animSet.playTogether(iAlpha, vAlpha, iX, vX);
-        animSet.setDuration(countryAnimDuration);
+        animSet.setDuration(childAnimDuration);
         animSet.start();
     }
 
@@ -235,45 +202,12 @@ public class MainActivity extends AppCompatActivity {
             animV[1] = R.anim.slide_out_top;
         }
 
-        setCountryText(countries[pos % countries.length], left2right);
+        Child childMovingTo = children.get(pos % children.size());
+        setCountryText(childMovingTo.getFirstName() + ", " + childMovingTo.getAge(), left2right);
 
-        /*
-        temperatureSwitcher.setInAnimation(MainActivity.this, animH[0]);
-        temperatureSwitcher.setOutAnimation(MainActivity.this, animH[1]);
-        temperatureSwitcher.setText(temperatures[pos % temperatures.length]);*/
-
-        placeSwitcher.setInAnimation(MainActivity.this, animV[0]);
-        placeSwitcher.setOutAnimation(MainActivity.this, animV[1]);
-        placeSwitcher.setText(places[pos % places.length]);
-
-        /*clockSwitcher.setInAnimation(MainActivity.this, animV[0]);
-        clockSwitcher.setOutAnimation(MainActivity.this, animV[1]);
-        clockSwitcher.setText(times[pos % times.length]);*/
-
-        descriptionsSwitcher.setText(getString(descriptions[pos % descriptions.length]));
-
-        //showMap(maps[pos % maps.length]);
-
-        /*
-        ViewCompat.animate(greenDot)
-                .translationX(dotCoords[pos % dotCoords.length][0])
-                .translationY(dotCoords[pos % dotCoords.length][1])
-                .start();
-                */
+        descriptionsSwitcher.setText(children.get(pos % children.size()).getDescription());
 
         currentPosition = pos;
-    }
-
-    private void showMap(@DrawableRes int resId) {
-        if (decodeMapBitmapTask != null) {
-            decodeMapBitmapTask.cancel(true);
-        }
-
-        final int w = mapSwitcher.getWidth();
-        final int h = mapSwitcher.getHeight();
-
-        decodeMapBitmapTask = new DecodeBitmapTask(getResources(), resId, w, h, mapLoadListener);
-        decodeMapBitmapTask.execute();
     }
 
     private class TextViewFactory implements  ViewSwitcher.ViewFactory {
@@ -337,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
             final int clickedPosition = recyclerView.getChildAdapterPosition(view);
             if (clickedPosition == activeCardPosition) {
                 final Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                intent.putExtra(DetailsActivity.BUNDLE_IMAGE_ID, pics[activeCardPosition % pics.length]);
+                intent.putExtra(DetailsActivity.BUNDLE_IMAGE_ID, URLs.get(activeCardPosition % children.size()));
 
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                     startActivity(intent);
