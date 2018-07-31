@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 
 public class SettingsActivity extends AppCompatActivity {
@@ -15,11 +16,11 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
+        /*Toolbar toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);*/
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         if(savedInstanceState == null){
             FragmentManager fm = getSupportFragmentManager();
@@ -33,7 +34,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-             onBackPressed();
+            Log.v("TAG", "tacooooooooooooooo");
+             //onBackPressed();
+        finish();
              return true;
     }
 
