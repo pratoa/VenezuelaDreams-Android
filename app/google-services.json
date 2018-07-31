@@ -8,6 +8,57 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:16855f25fdea023a",
+        "android_client_info": {
+          "package_name": "com.androidhire.loginwithfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-925p8ckcg284f42p55mo7e52b0plqdvm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.androidhire.loginwithfirebase",
+            "certificate_hash": "4d003806ac5d0b665e10102310752fb1603f0143"
+          }
+        },
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "149344227690-8eavi9nsdr1ufcl8g3ik33ohqjq5qsoi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "AndresPrato.VenezuelaDreams"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:149344227690:android:7aaa9a0ca7c7a3fe",
         "android_client_info": {
           "package_name": "com.example.andresprato.venezueladream"
@@ -23,8 +74,12 @@
           }
         },
         {
-          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "149344227690-ijbt92vmg4sggubd1ssq60vi5jumsn72.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andresprato.venezueladream",
+            "certificate_hash": "5cf7036e9542ddb46fc0cd16c7a8b7af7ed4463d"
+          }
         },
         {
           "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",

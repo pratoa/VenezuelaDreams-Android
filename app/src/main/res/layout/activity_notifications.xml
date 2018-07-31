@@ -11,12 +11,12 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        />
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/container">
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
 
-    </FrameLayout>
+    <TextView
+        android:paddingTop="?attr/actionBarSize"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is where any notifications will go." />
 </android.support.constraint.ConstraintLayout>
