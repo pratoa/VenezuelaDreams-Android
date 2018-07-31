@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onStart();
 
-        mAuth.addAuthStateListener(mAuthListener);
+        //mAuth.addAuthStateListener(mAuthListener);
 
     }
 
@@ -57,10 +57,10 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //check the current user
-        if (mAuth.getCurrentUser() != null) {
+        /*if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
-        }
+        }*/
 
         setContentView(R.layout.activity_login);
 
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+       /* mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
             }
-        };
+        };*/
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
