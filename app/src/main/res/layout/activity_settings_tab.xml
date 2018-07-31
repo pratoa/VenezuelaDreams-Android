@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/background_layout">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/pencil_icon" />
+                    <TextView
+                        android:id="@+id/edit_profile"
+                        android:layout_width="370dp"
+                        android:layout_height="70dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="20dp"
+                        android:text="@string/Edit_Profile"
+                        android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/password_icon" />
+
+                <TextView
+                    android:id="@+id/change_password"
+                    android:layout_width="362dp"
+                    android:layout_height="70dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:textSize="18dp"
+                    android:text="@string/Change_Password" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/payment_icon" />
+
+                <TextView
+                    android:id="@+id/payment_information"
+                    android:layout_width="362dp"
+                    android:layout_height="70dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:textSize="18dp"
+                    android:text="@string/Payment_Info" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/notifications_icon" />
+
+                <TextView
+                    android:id="@+id/notifications"
+                    android:layout_width="351dp"
+                    android:layout_height="70dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:textSize="18dp"
+                    android:text="@string/Notifications" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/signout_icon" />
+
+                <TextView
+                    android:id="@+id/logout"
+                    android:layout_width="353dp"
+                    android:layout_height="70dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:textSize="18dp"
+                    android:text="@string/Logout" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/settings_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                android:background="@color/temperature_background"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/history_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/history"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>
