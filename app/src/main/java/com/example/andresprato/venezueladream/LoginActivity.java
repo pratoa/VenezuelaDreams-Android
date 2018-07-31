@@ -118,9 +118,8 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // there was an error
                                     Log.d(TAG, "signInWithEmail:success");
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    //SIGN IN NOW
+                                    signIn();
 
                                 } else {
                                     Log.d(TAG, "singInWithEmail:Fail");
@@ -156,8 +155,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void signIn(){
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -190,6 +190,8 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            //SIGN IN
+                            signIn();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
