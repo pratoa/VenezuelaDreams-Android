@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/VenezuelaDreams-Android.iml" filepath="$PROJECT_DIR$/VenezuelaDreams-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/VenezuelaDreams-Android.iml" filepath="$PROJECT_DIR$/.idea/VenezuelaDreams-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/card-slider-0.2.0/card-slider-0.2.0.iml" filepath="$PROJECT_DIR$/card-slider-0.2.0/card-slider-0.2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/card-slider-0.2.0/card-slider-0.2.0.iml" filepath="$PROJECT_DIR$/card-slider-0.2.0/card-slider-0.2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/picasso-2.5.2/picasso-2.5.2.iml" filepath="$PROJECT_DIR$/picasso-2.5.2/picasso-2.5.2.iml" />
     </modules>
   </component>
 </project>

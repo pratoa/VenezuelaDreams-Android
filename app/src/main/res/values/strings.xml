@@ -21,6 +21,11 @@
     <string name="confirm">SAVE</string>
     <string name="cancel">CANCEL</string>
 
+    <string name="image">image</string>
+    <string name="email_id">email id</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="failed">Authentication Failed</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
 
