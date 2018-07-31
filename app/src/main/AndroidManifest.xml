@@ -29,6 +29,10 @@
         <activity android:name=".DetailsActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".SettingsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".EditingActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".EditProfileActivity"

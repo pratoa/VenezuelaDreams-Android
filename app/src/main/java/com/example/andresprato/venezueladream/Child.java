@@ -1,5 +1,7 @@
 package com.example.andresprato.venezueladream;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.text.DateFormat;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Child {
 
+    private String id;
     private String firstName;
     private String lastName;
     private String description;
@@ -19,7 +22,8 @@ public class Child {
     private String imageUrl;
 
 
-    public Child(String fName, String lName, String desc, String img, String dob) {
+    public Child(String childId, String fName, String lName, String desc, String img, String dob) {
+        id = childId;
         firstName = fName;
         lastName = lName;
         description = desc;
@@ -80,5 +84,9 @@ public class Child {
             e.printStackTrace();
             age = 0;
         }
+    }
+
+    public String getId() {
+        return id;
     }
 }

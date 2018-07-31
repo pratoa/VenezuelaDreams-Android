@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextSwitcher;
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     private long childAnimDuration;
     private int currentPosition;
 
+    //get donate button, set listener, send child_id, age, name, photo
+    Button donateButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot childData : dataSnapshot.getChildren()) {
-                    Child child = new Child(childData.child("first_name").getValue(String.class),
+                    Child child = new Child(
+                            childData.child("child_id").getValue(String.class),
+                            childData.child("first_name").getValue(String.class),
                             childData.child("last_name").getValue(String.class),
                             childData.child("description").getValue(String.class),
                             childData.child("img_url").getValue(String.class),
@@ -91,6 +97,26 @@ public class MainActivity extends AppCompatActivity {
                 initRecyclerView();
                 initCountryText();
                 initSwitchers();
+                donateButton = findViewById(R.id.donateButton);
+                donateButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, DonationActivity.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name", children.get(currentPosition).getFirstName() + " " + children.get(currentPosition).getLastName());
+                        bundle.putString("imageURL", children.get(currentPosition).getImageUrl());
+                        bundle.putInt("age", children.get(currentPosition).getAge());
+                        bundle.putString("id", children.get(currentPosition).getId());
+
+                        intent.putExtras(bundle);
+
+                        startActivity(intent);
+
+                    }
+
+                });
                 //initGreenDot();
 
             }
@@ -113,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 //go to settings
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.log_out:
