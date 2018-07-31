@@ -7,6 +7,17 @@
     android:orientation="vertical"
     android:clipChildren="false">
 
+    <ImageView
+        android:id="@+id/settings_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_settings_black_18dp"
+        android:tint="@android:color/darker_gray"
+        android:layout_gravity="end"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp"
+        android:clickable="true"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="38dp"
@@ -37,22 +48,6 @@
                 android:layout_gravity="center_vertical"/>
 
         </FrameLayout>
-
-        <!-- <FrameLayout
-            android:layout_width="85dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/temperature_background"
-            android:layout_centerVertical="true"
-            android:id="@+id/frameLayout">
-
-            <TextSwitcher
-                android:id="@+id/ts_temperature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
-
-        </FrameLayout> -->
 
     </RelativeLayout>
 
@@ -119,48 +114,13 @@
             android:layout_marginStart="70dp"
             android:layout_marginEnd="29dp"/>
 
-        <!--
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/ts_description">
-
-            <ImageView
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="30dp"
-                android:src="@drawable/clock"
-                android:scaleType="fitCenter"/>
-
-            <TextSwitcher
-                android:id="@+id/ts_clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/left_offset"/>
-
-        </FrameLayout> -->
-
-<!--        <FrameLayout
-            android:id="@+id/green_dot"
+        <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <View
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:background="@drawable/green_dot_big"
-                android:alpha="0.5"/>
-
-            <View
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_gravity="center"
-                android:background="@drawable/green_dot_small"/>
-
-        </FrameLayout> -->
+            android:layout_height="wrap_content"
+            android:text="Donate!"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ts_description"/>
 
     </RelativeLayout>
 
