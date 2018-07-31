@@ -6,10 +6,10 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         initCountryText();
         initSwitchers();
         //initGreenDot();
+
+
     }
 
     private void initRecyclerView() {

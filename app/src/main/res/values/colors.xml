@@ -12,4 +12,10 @@
     <color name="green_dot_big">@color/blue</color>
     <color name="green_dot_small">@color/blue</color>
 
+    <color name="black">#000000</color>
+
+    <color name="button_pressed">#d3d3d3</color>
+    <color name="button_focused">#d3d3d3</color>
+    <color name="button_default">#ffffff</color>
+
 </resources>
