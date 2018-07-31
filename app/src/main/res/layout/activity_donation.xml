@@ -1,6 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/donation_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/images" />
+
+    <TextView
+        android:id="@+id/name_age2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name, Age"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donation_image"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="362dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_age2">
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="$2" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="$5" />
+
+        <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="$10" />
+
+        <RadioButton
+            android:id="@+id/radio4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="$20" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/credit_card_number"
+        android:layout_width="231dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Credit Card Number"
+        app:layout_constraintBottom_toTopOf="@+id/exp_date"
+        app:layout_constraintEnd_toStartOf="@+id/zip_code"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <EditText
+        android:id="@+id/cvc"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="CVC"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/exp_date"
+        app:layout_constraintTop_toBottomOf="@+id/zip_code" />
+
+    <EditText
+        android:id="@+id/zip_code"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Zip Code"
+        app:layout_constraintBottom_toTopOf="@+id/cvc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/credit_card_number"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <EditText
+        android:id="@+id/exp_date"
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Exp Date"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/cvc"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/credit_card_number" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvc" />
 
 </android.support.constraint.ConstraintLayout>
