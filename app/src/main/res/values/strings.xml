@@ -33,6 +33,7 @@
 
     <string name="edit">EDIT</string>
     <string name="save">SAVE</string>
+
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
