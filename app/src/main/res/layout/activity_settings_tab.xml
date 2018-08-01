@@ -7,8 +7,7 @@
 
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -82,7 +81,7 @@
                     android:text="@string/Payment_Info" />
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -102,7 +101,7 @@
                     android:paddingTop="20dp"
                     android:textSize="18dp"
                     android:text="@string/Notifications" />
-            </LinearLayout>
+            </LinearLayout>-->
 
 
             <LinearLayout

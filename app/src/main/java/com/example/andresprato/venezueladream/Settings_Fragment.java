@@ -102,21 +102,33 @@ public class Settings_Fragment extends Fragment {
             }
         });
 
-        final TextView notifications = rootView.findViewById(R.id.notifications);
+        /*final TextView notifications = rootView.findViewById(R.id.notifications);
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), NotificationsActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         final TextView logout = rootView.findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                System.exit(-1);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("You are now logged out!")
+                        .setTitle("Log out")
+                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                getActivity().finish();
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 

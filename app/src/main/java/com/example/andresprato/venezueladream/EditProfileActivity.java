@@ -3,8 +3,8 @@ package com.example.andresprato.venezueladream;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,20 +16,19 @@ public class EditProfileActivity extends AppCompatActivity{
     private TextView tvName;
     private TextView tvEmail;
 
-    private TextView tvEditButton;
+    private FloatingActionButton fab;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        /*Toolbar toolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);*/
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        tvEditButton = findViewById(R.id.editbutton);
-        tvEditButton.setOnClickListener(new View.OnClickListener() {
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditProfileActivity.this, EditingActivity.class);
@@ -39,6 +38,7 @@ public class EditProfileActivity extends AppCompatActivity{
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user.reload();
         if (user != null) {
 
             String name = user.getDisplayName();
@@ -65,7 +65,7 @@ public class EditProfileActivity extends AppCompatActivity{
 
     @Override
     public boolean onSupportNavigateUp() {
-        onBackPressed();
+        finish();
         return true;
     }
 

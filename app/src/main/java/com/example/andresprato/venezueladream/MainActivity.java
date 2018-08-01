@@ -3,10 +3,12 @@ package com.example.andresprato.venezueladream;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.ActivityOptions;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.StyleRes;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.example.andresprato.venezueladream.cards.SliderAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -146,6 +149,19 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.log_out:
                 //log out
+                FirebaseAuth.getInstance().signOut();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("You are now logged out!")
+                        .setTitle("Log out")
+                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //finish();
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
                 return true;
         }
 
