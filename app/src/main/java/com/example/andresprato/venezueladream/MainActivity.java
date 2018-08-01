@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (DataSnapshot childData : dataSnapshot.getChildren()) {
                     Child child = new Child(
-                            childData.child("child_id").getValue(String.class),
+                            childData.getKey(),
                             childData.child("first_name").getValue(String.class),
                             childData.child("last_name").getValue(String.class),
                             childData.child("description").getValue(String.class),
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.v("TACOOO", child.getFirstName());
                     Log.v("TACOOO", child.getLastName());
                     Log.v("TACOOO", child.getDescription());
+                    Log.v("AQUII", child.getId());
 
                     children.add(child);
                 }
@@ -106,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
                         Bundle bundle = new Bundle();
                         bundle.putString("name", children.get(currentPosition).getFirstName() + " " + children.get(currentPosition).getLastName());
-                        bundle.putString("imageURL", children.get(currentPosition).getImageUrl());
+                        bundle.putString("image_url", children.get(currentPosition).getImageUrl());
                         bundle.putInt("age", children.get(currentPosition).getAge());
-                        bundle.putString("id", children.get(currentPosition).getId());
+                        bundle.putString("child_id", children.get(currentPosition).getId());
 
                         intent.putExtras(bundle);
 
