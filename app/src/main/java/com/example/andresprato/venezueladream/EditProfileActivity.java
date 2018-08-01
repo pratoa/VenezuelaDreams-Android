@@ -38,24 +38,25 @@ public class EditProfileActivity extends AppCompatActivity{
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        user.reload();
+        tvName = findViewById(R.id.name);
+        tvEmail = findViewById(R.id.email);
         if (user != null) {
 
             String name = user.getDisplayName();
-            tvName = findViewById(R.id.name);
+
             tvName.setText(name);
 
             String email = user.getEmail();
-            tvEmail = findViewById(R.id.email);
+
             tvEmail.setText(email);
 
             String uid = user.getUid();
         }
         else {
-            tvName = findViewById(R.id.name);
+
             tvName.setText("Name");
 
-            tvEmail = findViewById(R.id.email);
+
             tvEmail.setText("Email");
         }
 
