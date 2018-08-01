@@ -116,6 +116,7 @@ public class Settings_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
+                System.exit(-1);
             }
         });
 
