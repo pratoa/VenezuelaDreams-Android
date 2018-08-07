@@ -8,6 +8,68 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:b56513728fa1ceac",
+        "android_client_info": {
+          "package_name": "com.andresprato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:782503f468c0328f",
+        "android_client_info": {
+          "package_name": "com.andresprato.venezueladream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:149344227690:android:16855f25fdea023a",
         "android_client_info": {
           "package_name": "com.androidhire.loginwithfirebase"
@@ -79,6 +141,158 @@
           "android_info": {
             "package_name": "com.example.andresprato.venezueladream",
             "certificate_hash": "5cf7036e9542ddb46fc0cd16c7a8b7af7ed4463d"
+          }
+        },
+        {
+          "client_id": "149344227690-4ngh2ljin4all7nevlmv5kc5b32dcvlg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andresprato.venezueladream",
+            "certificate_hash": "4d003806ac5d0b665e10102310752fb1603f0143"
+          }
+        },
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "149344227690-8eavi9nsdr1ufcl8g3ik33ohqjq5qsoi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "AndresPrato.VenezuelaDreams"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:6cecf5d146079d9d",
+        "android_client_info": {
+          "package_name": "com.mobileapp.andresprato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:85e9dff1de83028e",
+        "android_client_info": {
+          "package_name": "com.mobileapp.andresprato.venezueladream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:b39b1e0f88ab67f3",
+        "android_client_info": {
+          "package_name": "com.mobileapp.vd.venezueladream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-5i796obdaorgbd3imgfuo59utd0j98hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuqJVFLKUeq43VUjN7whavDRgCDcQOSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149344227690:android:d2d735cb87b85bfe",
+        "android_client_info": {
+          "package_name": "edu.wit.mobileapp.loginactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149344227690-tdlvovvcoj3c2jh18616vrvgngbe73sb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.wit.mobileapp.loginactivity",
+            "certificate_hash": "4d003806ac5d0b665e10102310752fb1603f0143"
           }
         },
         {

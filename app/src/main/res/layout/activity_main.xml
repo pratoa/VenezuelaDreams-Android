@@ -49,7 +49,7 @@
         android:clipChildren="false"
         android:overScrollMode="never"
         app:layoutManager="com.ramotion.cardslider.CardSliderLayoutManager"
-        app:viewUpdater="com.example.andresprato.venezueladream.cards.CardsUpdater"/>
+        app:viewUpdater="com.mobileapp.andresprato.venezueladream.cards.CardsUpdater"/>
 
     <FrameLayout
         android:layout_width="match_parent"
